@@ -189,7 +189,7 @@ function exploitationReasons(vulns, policy) {
   reasons.push({
     label: exploited.length === 0
       ? 'No actively exploited vulnerabilities (CISA KEV)'
-      : `${exploited.length} component(s) with actively exploited vulnerabilities (CISA KEV) — CRA Art. 14 reporting may apply`,
+      : `${exploited.length} component(s) with actively exploited vulnerabilities (CISA KEV) — CRA Art. 14 reporting applies if exploitable in your product`,
     passed: exploited.length === 0 || policy.failOnKev === false,
     warning: exploited.length > 0 && policy.failOnKev === false,
   });

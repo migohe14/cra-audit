@@ -142,7 +142,7 @@ function vulnerabilityMessage(finding, source) {
     return `[MALICIOUS] ${pkg} is a known compromised release (${source.id}). Remove it and rotate exposed credentials.`;
   }
   const parts = [];
-  if (source.kev) parts.push(`[ACTIVELY EXPLOITED — CISA KEV since ${source.kev.dateAdded}; CRA Art. 14 reporting may apply]`);
+  if (source.kev) parts.push(`[ACTIVELY EXPLOITED — CISA KEV since ${source.kev.dateAdded}; CRA Art. 14 reporting applies if exploitable in your product]`);
   parts.push(`${pkg}: ${source.title || source.id}`);
   const cves = (source.aliases || []).filter((a) => /^CVE-/i.test(a));
   if (cves.length) parts.push(`(${cves.join(', ')})`);

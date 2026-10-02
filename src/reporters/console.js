@@ -100,13 +100,13 @@ function describeSources(section) {
 function renderArticle14Notice(reporting) {
   const local = reporting && reporting.local;
   logger.log('');
-  logger.warn(color.bold('CRA Art. 14 — dependency with a known exploited vulnerability (CISA KEV)'));
-  logger.detail('If it affects a product with digital elements you place on the EU market, notify');
-  logger.detail(`${local ? `${local.csirt} and ENISA` : 'the coordinating CSIRT and ENISA'} through the Single Reporting Platform (SRP):`);
-  logger.detail('  • Early warning ........ within 24 hours of becoming aware');
-  logger.detail('  • Notification ......... within 72 hours');
-  logger.detail('  • Final report ......... within 14 days after a corrective measure is available');
-  logger.detail('Assess exploitability in your product first; document the decision either way.');
+  logger.warn(color.bold('CRA Art. 14 — applies if this known exploited (CISA KEV) vulnerability is exploitable in your product'));
+  logger.detail('Assess first: is the vulnerable code shipped and exploitable in your product?');
+  logger.detail('  • Not exploitable ...... record it as not_affected with VEX (cra-audit vex)');
+  logger.detail(`  • Exploitable .......... notify ${local ? `${local.csirt} and ENISA` : 'the coordinating CSIRT and ENISA'} through the Single Reporting Platform (SRP):`);
+  logger.detail('      Early warning ...... within 24 hours of becoming aware');
+  logger.detail('      Notification ....... within 72 hours');
+  logger.detail('      Final report ....... within 14 days after a corrective measure is available');
   if (local) {
     logger.log('');
     logger.detail(color.bold(`${local.csirt} (${local.country}) — access to the SRP:`));

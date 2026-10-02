@@ -8,6 +8,13 @@ Releases are automated: pushing a `vX.Y.Z` tag publishes the package to npm
 (with provenance) and creates the GitHub Release from the matching section
 below, so add the section before running `npm version`.
 
+## [2.4.2] — Art. 14 notice: assess exploitability first
+
+### Changed
+
+- The Art. 14 notice now reads **"applies if this known exploited (CISA KEV) vulnerability is exploitable in your product"** and leads with the assessment: not exploitable → record a `not_affected` VEX statement; exploitable → notify the coordinating CSIRT and ENISA within 24 h / 72 h / 14 days of becoming aware.
+- The audit check label and the SARIF message say "CRA Art. 14 reporting applies if exploitable in your product" instead of "may apply".
+
 ## [2.4.1] — Clearer CRA Art. 14 notice
 
 ### Changed

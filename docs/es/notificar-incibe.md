@@ -54,13 +54,15 @@ npx cra-audit --country ES
 ```
 
 Revisa todas tus dependencias (npm, Yarn, pnpm, Python, Go, Java o cualquier SBOM) contra OSV.dev y el catálogo
-**CISA KEV** de vulnerabilidades explotadas. Si encuentra una, muestra los plazos del art. 14 y los pasos de
-INCIBE-CERT para acceder a la SRP:
+**CISA KEV** de vulnerabilidades explotadas. Si encuentra una, te pide evaluar si es explotable en tu producto
+y muestra los plazos del art. 14 que aplican si lo es, junto con los pasos de INCIBE-CERT para acceder a la SRP:
 
 ```text
-⚠ CRA Art. 14 — dependency with a known exploited vulnerability (CISA KEV)
-  … notify INCIBE-CERT and ENISA through the Single Reporting Platform (SRP):
-    • Early warning ........ within 24 hours of becoming aware
+⚠ CRA Art. 14 — applies if this known exploited (CISA KEV) vulnerability is exploitable in your product
+  Assess first: is the vulnerable code shipped and exploitable in your product?
+    • Not exploitable ...... record it as not_affected with VEX (cra-audit vex)
+    • Exploitable .......... notify INCIBE-CERT and ENISA through the Single Reporting Platform (SRP):
+        Early warning ...... within 24 hours of becoming aware
   INCIBE-CERT (ES) — access to the SRP:
     1. Email cve-coordination@incibe.es asking for a user on the ENISA Single Reporting Platform (SRP).
 ```

@@ -55,16 +55,19 @@ Checks every **direct and transitive** dependency, at the exact version pinned i
 | --- | --- | --- |
 | [OSV.dev](https://osv.dev) — GitHub Advisory Database | Known vulnerabilities, with severity, CVE aliases and the version that fixes them | Fails at or above `--fail-on` (default `high`) |
 | OSV.dev — [OpenSSF malicious packages](https://github.com/ossf/malicious-packages) | Compromised releases (`MAL-*`), e.g. the Shai-Hulud worm versions | **Always fails**; cannot be allowlisted |
-| [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | Vulnerabilities with evidence of **active exploitation** | Fails by default (`--no-fail-on-kev` to only warn) and shows the CRA Art. 14 deadlines that apply if it affects your product |
+| [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | Vulnerabilities with evidence of **active exploitation** | Fails by default (`--no-fail-on-kev` to only warn) and shows the CRA Art. 14 deadlines that apply if it is exploitable in your product |
 
 ```text
   HIGH     [KEV] vite@6.2.3  (fix: vite@6.4.3)
     GHSA-4r4m-qw57-chr8 / CVE-2025-31125 Vite has a `server.fs.deny` bypassed … [KEV since 2026-01-22]
 
-⚠ CRA Art. 14 — dependency with a known exploited vulnerability (CISA KEV)
-    • Early warning ........ within 24 hours of becoming aware
-    • Notification ......... within 72 hours
-    • Final report ......... within 14 days after a corrective measure is available
+⚠ CRA Art. 14 — applies if this known exploited (CISA KEV) vulnerability is exploitable in your product
+    Assess first: is the vulnerable code shipped and exploitable in your product?
+      • Not exploitable ...... record it as not_affected with VEX (cra-audit vex)
+      • Exploitable .......... notify the coordinating CSIRT and ENISA through the Single Reporting Platform (SRP):
+          Early warning ...... within 24 hours of becoming aware
+          Notification ....... within 72 hours
+          Final report ....... within 14 days after a corrective measure is available
 ```
 
 Only package names and versions are sent to `api.osv.dev`; the KEV catalogue is downloaded from cisa.gov (or CISA's GitHub mirror). If KEV cannot be reached the report says so instead of silently passing, and if OSV.dev is unreachable the audit falls back to `npm audit`. `--vuln-source npm` uses `npm audit` directly.
