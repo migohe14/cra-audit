@@ -8,6 +8,13 @@ Releases are automated: pushing a `vX.Y.Z` tag publishes the package to npm
 (with provenance) and creates the GitHub Release from the matching section
 below, so add the section before running `npm version`.
 
+## [2.4.1] — Clearer CRA Art. 14 notice
+
+### Changed
+
+- The Art. 14 notice is now headed **"dependency with a known exploited vulnerability (CISA KEV)"** instead of "actively exploited vulnerability in a dependency". A KEV match means the vulnerability has been exploited somewhere; the reporting duty applies once you are aware that it is exploitable in your product (CRA Art. 3(42) and Art. 14(1)). The 24 h / 72 h / 14 days deadlines run from that awareness, not from the KEV listing.
+- README and the Spanish INCIBE-CERT guide describe KEV matches as a trigger to assess and document with VEX, not as a started reporting clock.
+
 ## [2.4.0] — Report to your country's CSIRT (INCIBE-CERT for Spain)
 
 ### Highlights
