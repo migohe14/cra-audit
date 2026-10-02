@@ -100,7 +100,7 @@ function describeSources(section) {
 function renderArticle14Notice(reporting) {
   const local = reporting && reporting.local;
   logger.log('');
-  logger.warn(color.bold('CRA Art. 14 — actively exploited vulnerability in a dependency'));
+  logger.warn(color.bold('CRA Art. 14 — dependency with a known exploited vulnerability (CISA KEV)'));
   logger.detail('If it affects a product with digital elements you place on the EU market, notify');
   logger.detail(`${local ? `${local.csirt} and ENISA` : 'the coordinating CSIRT and ENISA'} through the Single Reporting Platform (SRP):`);
   logger.detail('  • Early warning ........ within 24 hours of becoming aware');

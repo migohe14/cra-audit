@@ -20,8 +20,8 @@ const DEFAULT_POLICY = {
   sbomCreator: null,
   // Vulnerability source: `osv` (OSV.dev + CISA KEV) or `npm` (npm audit).
   vulnerabilitySource: 'osv',
-  // Fail when a dependency has an actively exploited vulnerability (CISA KEV),
-  // the trigger of the CRA Art. 14 reporting obligation.
+  // Fail when a dependency has an actively exploited vulnerability (CISA KEV):
+  // if it is exploitable in the product, CRA Art. 14 reporting applies.
   failOnKev: true,
   // ISO 3166-1 alpha-2 country of the manufacturer's main establishment: it
   // decides the CSIRT that receives CRA Art. 14 notifications (e.g. "ES").

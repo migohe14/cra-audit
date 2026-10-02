@@ -58,7 +58,7 @@ Revisa todas tus dependencias (npm, Yarn, pnpm, Python, Go, Java o cualquier SBO
 INCIBE-CERT para acceder a la SRP:
 
 ```text
-⚠ CRA Art. 14 — actively exploited vulnerability in a dependency
+⚠ CRA Art. 14 — dependency with a known exploited vulnerability (CISA KEV)
   … notify INCIBE-CERT and ENISA through the Single Reporting Platform (SRP):
     • Early warning ........ within 24 hours of becoming aware
   INCIBE-CERT (ES) — access to the SRP:

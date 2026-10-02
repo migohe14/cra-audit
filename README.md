@@ -55,13 +55,13 @@ Checks every **direct and transitive** dependency, at the exact version pinned i
 | --- | --- | --- |
 | [OSV.dev](https://osv.dev) — GitHub Advisory Database | Known vulnerabilities, with severity, CVE aliases and the version that fixes them | Fails at or above `--fail-on` (default `high`) |
 | OSV.dev — [OpenSSF malicious packages](https://github.com/ossf/malicious-packages) | Compromised releases (`MAL-*`), e.g. the Shai-Hulud worm versions | **Always fails**; cannot be allowlisted |
-| [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | Vulnerabilities with evidence of **active exploitation** | Fails by default (`--no-fail-on-kev` to only warn) and prints the CRA Art. 14 reporting clock |
+| [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | Vulnerabilities with evidence of **active exploitation** | Fails by default (`--no-fail-on-kev` to only warn) and shows the CRA Art. 14 deadlines that apply if it affects your product |
 
 ```text
   HIGH     [KEV] vite@6.2.3  (fix: vite@6.4.3)
     GHSA-4r4m-qw57-chr8 / CVE-2025-31125 Vite has a `server.fs.deny` bypassed … [KEV since 2026-01-22]
 
-⚠ CRA Art. 14 — actively exploited vulnerability in a dependency
+⚠ CRA Art. 14 — dependency with a known exploited vulnerability (CISA KEV)
     • Early warning ........ within 24 hours of becoming aware
     • Notification ......... within 72 hours
     • Final report ......... within 14 days after a corrective measure is available
@@ -69,7 +69,7 @@ Checks every **direct and transitive** dependency, at the exact version pinned i
 
 Only package names and versions are sent to `api.osv.dev`; the KEV catalogue is downloaded from cisa.gov (or CISA's GitHub mirror). If KEV cannot be reached the report says so instead of silently passing, and if OSV.dev is unreachable the audit falls back to `npm audit`. `--vuln-source npm` uses `npm audit` directly.
 
-> CRA Annex I Part I (2)(a) — *placed on the market without known exploitable vulnerabilities*. Art. 14 — *actively exploited vulnerabilities must be reported within 24 hours*.
+> CRA Annex I Part I (2)(a) — *placed on the market without known exploitable vulnerabilities*. Art. 14 — *any actively exploited vulnerability contained in the product* must be notified, with an early warning within 24 hours of becoming aware. A KEV match means the vulnerability has been exploited somewhere: assess whether it is exploitable in your product and record the decision with VEX.
 
 ### 3. Third-party component check
 
@@ -171,7 +171,7 @@ Findings point at the exact line of the manifest (in the console and in SARIF). 
 
 **Input SBOM (`-i`), any language:**
 
-`audit`, `vuln`, `licenses` and `vex` accept an existing **CycloneDX JSON**, **SPDX 2.x JSON** or **SPDX 3.0 JSON-LD** SBOM instead of the npm lockfile. Every component is looked up in OSV.dev by its **Package URL**, so you get the same checks — known vulnerabilities, **malicious packages**, **CISA KEV** with the Art. 14 clock, licenses, VEX and SARIF — for any ecosystem OSV covers (Maven, PyPI, Go, crates.io, NuGet, Packagist, RubyGems, Hex, Pub, npm…).
+`audit`, `vuln`, `licenses` and `vex` accept an existing **CycloneDX JSON**, **SPDX 2.x JSON** or **SPDX 3.0 JSON-LD** SBOM instead of the npm lockfile. Every component is looked up in OSV.dev by its **Package URL**, so you get the same checks — known vulnerabilities, **malicious packages**, **CISA KEV** with the Art. 14 deadlines, licenses, VEX and SARIF — for any ecosystem OSV covers (Maven, PyPI, Go, crates.io, NuGet, Packagist, RubyGems, Hex, Pub, npm…).
 
 ```bash
 # Generate the SBOM with the tool of your ecosystem…

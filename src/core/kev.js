@@ -6,7 +6,9 @@ const { fetchJson } = require('../utils/http');
  * CISA Known Exploited Vulnerabilities catalogue: the most complete public
  * list of vulnerabilities with evidence of active exploitation. Under CRA
  * Art. 14 (applicable since 11 September 2026) manufacturers must report
- * actively exploited vulnerabilities in their products within 24 hours.
+ * actively exploited vulnerabilities contained in their products within 24
+ * hours of becoming aware. A KEV match is a signal to assess, not a report
+ * by itself: the vulnerability must be exploitable in the product.
  *
  * The GitHub mirror maintained by CISA is used when the primary feed fails.
  */
